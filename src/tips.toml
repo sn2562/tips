@@ -1,0 +1,60 @@
+[[tips]]
+tags = ["pandas"]
+code = "plt.axvline(x=1, ls=':', alpha=0.5, c='black')"
+description = "グラフにリファレンスライン追加"
+
+[[tips]]
+tags = ["pandas"]
+code = "ax.text(x, y, text, c='tab:blue')"
+description = "グラフにテキスト追加"
+
+[[tips]]
+tags = ["pandas"]
+code = "df[['col1', 'col2']] = df['tuple_col'].apply(lambda x: pd.Series(x, index=['col1', 'col2']))"
+description = "タプルカラムをカラムに分解"
+
+[[tips]]
+tags = ["pandas"]
+code = """
+ax = df.plot()
+ax.axvspan('2020-01-01', '2020-01-10', alpha=0.5, color='black')
+"""
+description = "グラフ区間塗りつぶし"
+
+[[tips]]
+tags = ["hive"]
+code = "ALTER TABLE {table name} CHANFE {old column} {new column} {column type};"
+
+[[tips]]
+tags = ["hive"]
+code = "SHOW PARTITIONS {table name};"
+
+[[tips]]
+tags = ["bash"]
+code = """
+python3 -m venv venv3
+source venv-tips/bin/activate
+deactivate
+"""
+description = "venv環境"
+
+[[tips]]
+tags = ["bash"]
+code = "gzip -dc log.gz | less"
+description = "gzipのまま中身を見る"
+
+[[tips]]
+tags = ["bash"]
+code = "tar -zcfv hoge.tar.gz hoge"
+description = "圧縮"
+
+[[tips]]
+tags = ["bash"]
+code = "tar -zcfv hoge.tar.gz"
+description = "解凍"
+
+[[tips]]
+type = "link"
+tags = ["link"]
+link = "https://api.slack.com/tools/block-kit-builder"
+linktext = "slack block kit builder"

@@ -1,0 +1,131 @@
+<!-- jquery -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js -->
+<script src="js/jquery.easing.min.js"></script>
+
+<!-- bootstrap -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style/bootstrap-darkly.min.css">
+
+<!-- highlight -->
+<script src="js/highlight.pack.js"></script>
+<link rel="stylesheet" href="style/ir-black.css">
+
+<link rel="stylesheet" href="style/style.css">
+
+<head>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script type="text/javascript">
+    jQuery(function(){
+        // 検索
+        searchText = function(){
+          $('td').parent("tr").hide() // 全消し
+          expression = `td:contains('${$(this).val().toLowerCase()}')`; // tdのうち検索文字列を含む要素を選択する式
+          $(expression).parent("tr").show(); // マッチした部分は表示
+        };
+
+        $('#search-text').on('input', searchText);
+
+        // code要素のクリックでクリップボードにコピー
+        copy2Clipboard = function(){
+          var tmp_clipboard = $('<textarea></textarea>');
+          tmp_clipboard.val($(this).text());
+          $(this).append(tmp_clipboard);
+          tmp_clipboard.select();
+          document.execCommand('copy');
+          tmp_clipboard.remove();
+        }
+        $('code').on('click', copy2Clipboard);
+      });
+    // })(jQuery);
+    </script>
+    </head>
+  </script>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="col-md-auto">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">FILTER</span>
+        </div>
+        <input type="text" id="search-text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="検索ワードを入力">
+      </div><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>tags</th>
+      <th>code</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="badge badge-primary">link</span></td>
+      <td><a href="https://api.slack.com/tools/block-kit-builder" target="_blank">slack block kit builder</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-light">bash</span></td>
+      <td><pre><code>tar -zcfv hoge.tar.gz</pre></code></td>
+      <td><p>解凍</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-light">bash</span></td>
+      <td><pre><code>tar -zcfv hoge.tar.gz hoge</pre></code></td>
+      <td><p>圧縮</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-light">bash</span></td>
+      <td><pre><code>python3 -m venv venv3&#10;source venv-tips/bin/activate&#10;deactivate&#10;</pre></code></td>
+      <td><p>venv環境</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-light">bash</span></td>
+      <td><pre><code>gzip -dc log.gz | less</pre></code></td>
+      <td><p>gzipのまま中身を見る</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-info">hive</span></td>
+      <td><pre><code>SHOW PARTITIONS {table name};</pre></code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-info">hive</span></td>
+      <td><pre><code>ALTER TABLE {table name} CHANFE {old column} {new column} {column type};</pre></code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-danger">pandas</span></td>
+      <td><pre><code>plt.axvline(x=1, ls=':', alpha=0.5, c='black')</pre></code></td>
+      <td><p>グラフにリファレンスライン追加</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-danger">pandas</span></td>
+      <td><pre><code>df[['col1', 'col2']] = df['tuple_col'].apply(lambda x: pd.Series(x, index=['col1', 'col2']))</pre></code></td>
+      <td><p>タプルカラムをカラムに分解</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-danger">pandas</span></td>
+      <td><pre><code>ax.text(x, y, text, c='tab:blue')</pre></code></td>
+      <td><p>グラフにテキスト追加</p></td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-danger">pandas</span></td>
+      <td><pre><code>ax = df.plot()&#10;ax.axvspan('2020-01-01', '2020-01-10', alpha=0.5, color='black')&#10;</pre></code></td>
+      <td><p>グラフ区間塗りつぶし</p></td>
+    </tr>
+  </tbody>
+</table><div class="search-area">
+        <div class="search-result">
+          <div class="search-result__hit-num"></div>
+          <div id="search-result__list"></div>
+        </div>
+      </div>
+      One of three columns.............
+
+    </div>
+  </div>
+</div>
+</body>

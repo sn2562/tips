@@ -1,0 +1,66 @@
+<!-- jquery -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js -->
+<script src="js/jquery.easing.min.js"></script>
+
+<!-- bootstrap -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style/bootstrap-darkly.min.css">
+
+<!-- highlight -->
+<script src="js/highlight.pack.js"></script>
+<link rel="stylesheet" href="style/ir-black.css">
+
+<link rel="stylesheet" href="style/style.css">
+
+<head>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script type="text/javascript">
+    jQuery(function(){
+        // 検索
+        searchText = function(){
+          $('td').parent("tr").hide() // 全消し
+          expression = `td:contains('${$(this).val().toLowerCase()}')`; // tdのうち検索文字列を含む要素を選択する式
+          $(expression).parent("tr").show(); // マッチした部分は表示
+        };
+
+        $('#search-text').on('input', searchText);
+
+        // code要素のクリックでクリップボードにコピー
+        copy2Clipboard = function(){
+          var tmp_clipboard = $('<textarea></textarea>');
+          tmp_clipboard.val($(this).text());
+          $(this).append(tmp_clipboard);
+          tmp_clipboard.select();
+          document.execCommand('copy');
+          tmp_clipboard.remove();
+        }
+        $('code').on('click', copy2Clipboard);
+      });
+    // })(jQuery);
+    </script>
+    </head>
+  </script>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="col-md-auto">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">FILTER</span>
+        </div>
+        <input type="text" id="search-text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="検索ワードを入力">
+      </div>[TABLE]<div class="search-area">
+        <div class="search-result">
+          <div class="search-result__hit-num"></div>
+          <div id="search-result__list"></div>
+        </div>
+      </div>
+      One of three columns.............
+
+    </div>
+  </div>
+</div>
+</body>

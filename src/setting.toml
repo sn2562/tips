@@ -1,0 +1,9 @@
+color.badge.default="secondary"
+
+color.badge.pandas="danger"
+
+color.badge.hive="info"
+
+color.badge.bash="light"
+
+color.badge.link="primary"
