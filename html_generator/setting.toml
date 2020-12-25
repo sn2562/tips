@@ -7,3 +7,7 @@ color.badge.hive="info"
 color.badge.bash="light"
 
 color.badge.link="primary"
+
+color.badge.memo="secondary"
+
+color.badge.error="secondary"

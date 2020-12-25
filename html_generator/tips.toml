@@ -58,3 +58,7 @@ type = "link"
 tags = ["link"]
 link = "https://api.slack.com/tools/block-kit-builder"
 linktext = "slack block kit builder"
+
+[[tips]]
+tags = ["pandas"]
+code = "df.to_pickle({file path})"

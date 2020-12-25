@@ -1,8 +1,10 @@
 import sys
+import os
 
 import pandas as pd
 import toml
 
+dir_path = os.path.dirname(__file__)
 
 def load_toml(path=None):
     with open(path, "r") as f:
@@ -10,7 +12,7 @@ def load_toml(path=None):
 
 
 def get_tag_html(tags):
-    color_settings = load_toml("setting.toml")["color"]["badge"]
+    color_settings = load_toml(os.path.join(dir_path, "setting.toml"))["color"]["badge"]
     if type(tags) == list:
         return "".join(
             [
@@ -66,19 +68,18 @@ def generate_table_html(files=None):
 
 def generate_index_html(table_html):
 
-    with open("template.html", "r") as f:
+    with open(os.path.join(dir_path, "template.html"), "r") as f:
         template = f.read()
 
-    with open("../index.html", "w") as f:
+    with open(os.path.join(dir_path, "index.html"), "w") as f:
         f.write(template.replace("[TABLE]", table_html))
 
 
 def main():
-    additional_files = sys.argv[1:]
+    files = sys.argv[1:]
+    if len(files) == 0:
+        files = [os.path.join(dir_path, "tips.toml")]
 
-    files = ["tips.toml"]
-    if len(additional_files) != 0:
-        files = files + additional_files
     html = generate_table_html(files)
     generate_index_html(html)
 
