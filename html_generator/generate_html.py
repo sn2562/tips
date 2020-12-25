@@ -1,10 +1,15 @@
-import sys
 import os
+import sys
 
 import pandas as pd
 import toml
 
-dir_path = os.path.dirname(__file__)
+# dir_path = os.path.dirname(__file__)
+if len(sys.argv) > 1:
+    dir_path = sys.argv[1]
+else:
+    dir_path = os.path.dirname(__file__)
+
 
 def load_toml(path=None):
     with open(path, "r") as f:
@@ -76,11 +81,8 @@ def generate_index_html(table_html):
 
 
 def main():
-    files = sys.argv[1:]
-    if len(files) == 0:
-        files = [os.path.join(dir_path, "tips.toml")]
 
-    html = generate_table_html(files)
+    html = generate_table_html(files=[os.path.join(dir_path, "tips.toml")])
     generate_index_html(html)
 
 

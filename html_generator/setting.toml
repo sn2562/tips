@@ -11,3 +11,5 @@ color.badge.link="primary"
 color.badge.memo="secondary"
 
 color.badge.error="secondary"
+
+color.badge.hadoop-streaming="secondary"
